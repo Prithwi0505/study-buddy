@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Study Buddy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+  <!-- DARK MODE TOGGLE (BOTTOM LEFT) -->
+  <button id="themeToggle" class="theme-toggle" title="Toggle theme">🌙</button>
+
+  <!-- DOWNLOAD PDF BUTTON -->
+  <button id="downloadPdfBtn" class="download-pdf-btn" title="Download as PDF">
+    ⬇️ PDF
+  </button>
+
+  <div class="layout">
+
+    <!-- LEFT FIXED PANEL -->
+    <aside class="left-panel">
+
+      <!-- BRANDING -->
+      <div class="left-brand">
+        <div class="logo-icon-wrapper">
+          <span class="logo-icon">📚</span>
+        </div>
+        <div class="logo-text-wrapper">
+          <span class="logo-text">STUDY<br>BUDDY</span>
+          <span class="logo-subtitle">AI LEARNING COMPANION</span>
+        </div>
+      </div>
+
+      <!-- INPUT CARD -->
+      <div class="input-card">
+
+        <h3>Enter your syllabus</h3>
+
+        <!-- TEXT INPUT SECTION -->
+        <div class="input-section text-section">
+          <textarea id="syllabusText" placeholder="Paste your syllabus text here…"></textarea>
+
+          <button class="send-btn text-send" onclick="analyzeTextOnly()" title="Analyze text syllabus">
+            ➤
+          </button>
+        </div>
+
+        <!-- FILE INPUT SECTION -->
+        <div class="input-section file-section">
+          <label for="fileInput" class="attach-btn">📎</label>
+          <input type="file" id="fileInput" accept=".pdf,image/*" hidden />
+
+          <span id="attachHint" class="attach-hint">Attach image / PDF</span>
+
+          <div id="filePreview" class="file-preview hidden">
+            <span id="fileIcon">📄</span>
+            <span id="fileName">filename.pdf</span>
+            <button onclick="removeFile()">✕</button>
+          </div>
+
+          <button class="send-btn file-send" onclick="analyzeFileOnly()" title="Analyze file syllabus">
+            ➤
+          </button>
+        </div>
+
+        <!-- YT PLAYLIST TOGGLE (CENTERED BOTTOM) -->
+        <div class="yt-toggle center-bottom">
+          <input type="checkbox" id="ytToggle" checked />
+          <label for="ytToggle">Add related YT playlists</label>
+        </div>
+
+      </div>
+      <!-- input-card ends -->
+
+      <!-- ✅ AI CREDIT (STAYS IN LEFT PANEL) -->
+      <div class="ai-credit">
+        powered by <span>OpenRouter</span> · <span>OpenAI (gpt-4o-mini)</span>
+      </div>
+
+    </aside>
+    <!-- left-panel ends -->
+
+    <!-- RIGHT RESULTS PANEL -->
+    <main id="result" class="right-panel"></main>
+
+  </div>
+  <!-- layout ends -->
+
+  <!-- ✅ GLOBAL USAGE WARNING (CENTERED ON SCREEN) -->
+  <div class="usage-warning global-warning">
+    please copy text or download pdf before reloading / leaving the site
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
